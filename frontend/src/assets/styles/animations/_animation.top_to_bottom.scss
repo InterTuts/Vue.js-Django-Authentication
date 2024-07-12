@@ -1,0 +1,17 @@
+// CREATE THE TOP TO BOTTOM ANIMATION
+.top-to-bottom-animation {
+    animation: top-to-bottom-animation 0.3s linear forwards;
+    transform-origin: top;
+}
+
+// SHOW BOX FROM TOP TO BOTTOM
+@keyframes top-to-bottom-animation {
+    0% {
+      transform: scaleY(0);
+    }
+  
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  
