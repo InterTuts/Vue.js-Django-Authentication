@@ -1,5 +1,2 @@
-# Ignore specific subdirectory .env files
-api/.env
-
 # Ignore specific directory
 myenv/
