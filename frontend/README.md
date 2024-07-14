@@ -1,45 +1,22 @@
-# frontend
+## Vue.js & Django Authentication
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue.js & Django Authentication is a basic authentication solution written in Vue.js 3(for frontend) and Django(for backend).
 
-## Recommended IDE Setup
+# Features:
+1. Email registration form.
+2. Email login form.
+3. Password reset form.
+4. SMTP support for password reset.
+5. Google API login/registration.
+6. Form validation for wrong input data.
+7. Remember Me option.
+8. Basic dashboard page.
+9. Short/long time session.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+# To develop this authentication solution:
 
-## Type Support for `.vue` Imports in TS
+For frontend I used Vue.js 3, Vuetify 3.6.10, Vuelidate 2.0.3, Pinia 2.1.7, Axios 1.7.2, js-cookie 3.0.5, Vue I18n 9.13.1, DomPurify 3.1.6 and other libraries.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+For backend I used Django 5.0.6, django-cors-headers 4.4.0, django-ratelimit 4.1.0, django-rest-passwordreset 1.4.1, djangorestframework  3.15.2, psycopg2-binary  2.9.9 and other libraries.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+This authentication solution will be/or is used in other my Vue.js 3 repositories. 
