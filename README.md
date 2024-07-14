@@ -11,7 +11,7 @@ Vue.js & Django Authentication is a basic authentication solution written in Vue
 6. Form validation for wrong input data.
 7. Remember Me option.
 8. Basic dashboard page.
-9. Short/long time session.
+9. Short/long time session. 
 
 ### To develop this authentication solution:
 
