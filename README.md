@@ -2,7 +2,7 @@
 
 Vue.js & Django Authentication is a basic authentication solution written in Vue.js 3(for frontend) and Django(for backend).
 
-# Features:
+### Features:
 1. Email registration form.
 2. Email login form.
 3. Password reset form.
@@ -13,7 +13,7 @@ Vue.js & Django Authentication is a basic authentication solution written in Vue
 8. Basic dashboard page.
 9. Short/long time session.
 
-# To develop this authentication solution:
+### To develop this authentication solution:
 
 For frontend I used Vue.js 3, Vuetify 3.6.10, Vuelidate 2.0.3, Pinia 2.1.7, Axios 1.7.2, js-cookie 3.0.5, Vue I18n 9.13.1, DomPurify 3.1.6 and other libraries.
 
