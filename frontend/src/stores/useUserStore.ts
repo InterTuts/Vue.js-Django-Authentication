@@ -1,10 +1,11 @@
 // Installed Utils
 import { defineStore } from 'pinia';
-import axios, { type AxiosResponse } from '@/axios';
+import DOMPurify from 'dompurify';
 
 // App Utils
 import type ApiResponse from '@/interfaces/apiResponse';
 import type { User } from '@/interfaces/user';
+import axios, { type AxiosResponse } from '@/axios';
 import { useToken } from '@/composables/useToken';
 
 export const useUserStore = defineStore('user', {
@@ -29,8 +30,11 @@ export const useUserStore = defineStore('user', {
         const response: AxiosResponse<ApiResponse<User>> = await axios.get('api/user/info');
 
         // Check if the message is success
-        if (response.data.success) {
-          this.setUserData(response.data.content as User);
+        if (response.data.success && response.data.content) {
+          this.setUserData({
+            id: response.data.content?.id,
+            email: DOMPurify.sanitize(response.data.content?.email)
+          });
         }
       } catch (error) {
         console.error(error);

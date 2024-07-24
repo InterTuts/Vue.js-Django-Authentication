@@ -1,23 +1,23 @@
 // System Utils
-import { h } from "vue";
+import { h } from 'vue';
 
 // Installed Utils
 import {
-  mount,
-  VueWrapper
+    mount,
+    VueWrapper
 } from '@vue/test-utils';
 import {
-  vi,
-  describe,
-  it,
-  expect,
-  beforeAll,
-  afterAll
-} from 'vitest';
+    vi,
+    describe,
+    it,
+    expect,
+    beforeAll,
+    afterAll
+  } from 'vitest';
 import { VApp } from "vuetify/components";
 
 // App Utils
-import SignInView from '../SignInView.vue';
+import RegistrationView from '../RegistrationView.vue';
 import { useAuth } from "@/composables/useAuth";
 import axios, { type Axios } from '@/axios';
 
@@ -29,13 +29,13 @@ vi.mock('axios', async () => {
   }
 });
 
-describe('SignInForm.vue', () => {
+describe('RegistrationForm.vue', () => {
   let wrapper: VueWrapper;
 
   beforeAll(() => {
     wrapper = mount(VApp, {
       slots: {
-        default: h(SignInView),
+        default: h(RegistrationView),
       }
     });
   });
@@ -45,14 +45,13 @@ describe('SignInForm.vue', () => {
   });
 
   it('renders the strings correctly', () => {
-    expect(wrapper.text()).toContain('Sign In to MyApp');
+    expect(wrapper.text()).toContain('Sign Up to MyApp');
     expect(wrapper.text()).toContain('Continue with Google');
-    expect(wrapper.text()).toContain('Forgot Password?');
-    expect(wrapper.text()).toContain('Don\'t have an account?');
-    expect(wrapper.text()).toContain('Register an account');
+    expect(wrapper.text()).toContain('Do you have an account?');
+    expect(wrapper.text()).toContain('Sign In');
   });
 
-  it('renders the vuetify inputs', () => {
+  it('renders the vuetify inputs', async () => {
     const emailInput = wrapper.find('input[type="email"]');
     const passwordInput = wrapper.find('input[type="password"]');
     expect(emailInput.exists()).toBeTruthy();
@@ -69,7 +68,7 @@ describe('SignInForm.vue', () => {
     expect(wrapper.text()).toContain('The password is too short.');
   });
 
-  it('sends login request', async () => {
+  it('sends registration request', async () => {
 
     // Create a mock response
     const mockResponse = {
@@ -85,8 +84,8 @@ describe('SignInForm.vue', () => {
     // Arrange
     const { authRequest, successMessage, errorMessage, isLoading } = useAuth();
 
-    // Try to login
-    const response = await authRequest('api/auth/sign-in', { email: 'test@example.com', password: 'test' });
+    // Try to sign up
+    const response = await authRequest('api/auth/registration', { email: 'test@example.com', password: 'test' });
 
     // Verify if the response has expected values
     expect(isLoading.value).toBe(false);

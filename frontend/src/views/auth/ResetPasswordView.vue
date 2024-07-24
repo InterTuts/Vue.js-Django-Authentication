@@ -54,15 +54,12 @@ const handleSubmit = async () => {
   if (v$.value.$invalid) {
     return;
   }
-console.log(state);
+
   // Request the password reset
   const passwordReset = authRequest('api/auth/password-reset', state);
   
   // Process the promise response
-  passwordReset.then(response => {
-    console.log(response);
-  })
-  .catch(error => {
+  passwordReset.catch(error => {
     console.log(error);
   });
 
@@ -81,10 +78,10 @@ console.log(state);
         <v-row>
           <v-col cols="12">
             <v-text-field
+              type="email"
               v-model="state.email"
               :error-messages="v$.email.$errors.map((e) => e.$message)"
               :label="$t('email')"
-              required
               variant="outlined"
               autocomplete="new-email"
               @blur="v$.email.$touch"

@@ -119,6 +119,7 @@ const googleConnect = import.meta.env.VITE_APP_API_URL + 'api/auth/google-connec
         <v-row>
           <v-col cols="12">
             <v-text-field
+              type="email"
               v-model="state.email"
               :error-messages="v$.email.$errors.map((e) => e.$message)"
               :label="$t('email')"

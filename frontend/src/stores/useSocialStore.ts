@@ -1,10 +1,11 @@
 // Installed Utils
+import DOMPurify from 'dompurify';
 import { defineStore } from 'pinia';
-import axios, { type AxiosResponse } from '@/axios';
 
 // App Utils
 import type ApiResponse from '@/interfaces/apiResponse';
 import type { UserSocial, UserLogin } from '@/interfaces/user';
+import axios, { type AxiosResponse } from '@/axios';
 import { useToken } from '@/composables/useToken';
 import { useUserStore } from '@/stores/useUserStore';
 
@@ -33,18 +34,21 @@ export const useSocialStore = defineStore('social', {
                 // Check if the message is success
                 if (response.data.success) {
                     if ( response.data.content && response.data.content.social_id ) {
-                        this.userData = response.data.content;
+                        this.userData = {
+                            social_id: response.data.content.id,
+                            email: DOMPurify.sanitize(response.data.content.email)
+                        };
                     } else if ( response.data.content && response.data.content.id ) {
                         // Save the token
-                        saveToken(response.data.content.token);
+                        saveToken(DOMPurify.sanitize(response.data.content.token));
                         // Save User
                         userStore.setUserData({
                             id: response.data.content.id,
-                            email: response.data.content.email
+                            email: DOMPurify.sanitize(response.data.content.email)
                         });
                     }
                 } else if (response.data.message) {
-                    this.errorMessage = response.data.message;
+                    this.errorMessage = DOMPurify.sanitize(response.data.message);
                 }
 
             } catch (error) {

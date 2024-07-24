@@ -1,5 +1,5 @@
 // Installed Utils
-import axios, { type AxiosResponse } from 'axios';
+import axios, { type AxiosResponse, Axios } from 'axios';
 
 // App Utils
 import { useToken } from '@/composables/useToken';
@@ -23,5 +23,5 @@ instance.interceptors.request.use((config) => {
     return Promise.reject(error);
 });
 
-export type { AxiosResponse };
+export type { AxiosResponse, Axios };
 export default instance;
